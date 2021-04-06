@@ -30,7 +30,7 @@ export default function TopBar({ editorRef }) {
           try {
             const form = new FormData();
             form.append('content', editorRef.current.value);
-            axios.post('http://localhost:3849/set', form).then(result => {
+            axios.post('https://b.uditkaro.de/api/set', form).then(result => {
               console.log(result.data);
             }).catch(e => {
               console.log("ERR>" + e);

@@ -11,8 +11,8 @@ export default function Editor({ editorRef }) {
           try {
             const form = new FormData();
             form.append('content', editorRef.current.value);
-            axios.post('http://localhost:3849/set', form).then(result => {
-              window.location = `http://localhost:3000/fetch/${result.data.message}`;
+            axios.post('https://b.uditkaro.de/api/set', form).then(result => {
+              window.location = `https://b.uditkaro.de/api/fetch/${result.data.message}`;
             }).catch(e => {
               console.log("ERR>" + e);
             });

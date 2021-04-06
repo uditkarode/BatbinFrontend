@@ -11,7 +11,7 @@ export default function Viewer() {
   useEffect(() => {
     async function getPaste() {
       try {
-        const response = (await axios.get(`http://localhost:3849/get?id=${id}`)).data;
+        const response = (await axios.get(`https://b.uditkaro.de/api/get?id=${id}`)).data;
         if(response.status === "failure") {
           console.log(response);
           setContent(response.message);
