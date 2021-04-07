@@ -31,10 +31,12 @@ export default function TopBar({ editorRef }) {
             const form = new FormData();
             form.append('content', editorRef.current.value);
             axios.post('https://b.uditkaro.de/api/set', form).then(result => {
-              if(result.success === "true") {
+              if(result.data.status === "success") {
                 window.location = `https://b.uditkaro.de/api/fetch/${result.data.message}`;
+              } else if(result.data.status === "failure") {
+                alert(result.data.message);
               } else {
-                alert(result.message);
+                console.log(`Received invalid response ${result.data}`)
               }
             }).catch(e => {
               console.log("ERR>" + e);
