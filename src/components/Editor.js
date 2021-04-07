@@ -12,7 +12,11 @@ export default function Editor({ editorRef }) {
             const form = new FormData();
             form.append('content', editorRef.current.value);
             axios.post('https://b.uditkaro.de/api/set', form).then(result => {
-              window.location = `https://b.uditkaro.de/api/fetch/${result.data.message}`;
+              if(result.success === "true") {
+                window.location = `https://b.uditkaro.de/api/fetch/${result.data.message}`;
+              } else {
+                alert(result.message);
+              }
             }).catch(e => {
               console.log("ERR>" + e);
             });

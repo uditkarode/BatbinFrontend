@@ -13,10 +13,8 @@ export default function Viewer() {
       try {
         const response = (await axios.get(`https://b.uditkaro.de/api/get?id=${id}`)).data;
         if(response.status === "failure") {
-          console.log(response);
           setContent(response.message);
         } else {
-          console.log("ye me doing this")
           setContent(response);
         }
       } catch(e) {
@@ -30,10 +28,8 @@ export default function Viewer() {
   if(content !== undefined) {
     return (
       <div style={{ marginLeft: 15 }}>
-        <Highlight>
-          <p style={{ fontFamily: 'Fira Mono' }}>
+        <Highlight style={{ fontFamily: 'Fira Mono' }}>
             {content}
-          </p>
         </Highlight>
       </div>
     );
