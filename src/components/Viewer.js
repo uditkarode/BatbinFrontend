@@ -4,9 +4,9 @@ import highlight from 'highlight.js';
 import { useParams } from "react-router";
 import "../../node_modules/highlight.js/styles/atom-one-dark.css";
 
-const getHtmlFromCode = code => {
+const getHtmlFromCode = (code, language) => {
   const retval = highlight
-          .highlightAuto(code)
+          .highlightAuto(code, language)
           .value
           .split('\n')
           .map((l, n) => {
@@ -23,14 +23,17 @@ export default function Viewer() {
   useEffect(() => {
     async function getPaste() {
       try {
-        const response = (await axios.get(`https://b.uditkaro.de/api/get?id=${id}`)).data;
+        const [actualId, language] = id.split('.');
+        const response = (await axios.get(`https://b.uditkaro.de/api/get?id=${actualId}`)).data;
         if(response.status === "failure") {
           setContent(response.message);
         } else {
-          setContent(getHtmlFromCode(response));
+          let lang;
+          if(language) lang = [language];
+          setContent(getHtmlFromCode(response + "\n\n", lang));
         }
       } catch(e) {
-        setContent(getHtmlFromCode("Failed to get paste!\nasd"));
+        setContent("Could not fetch paste!");
       }
     }
 
