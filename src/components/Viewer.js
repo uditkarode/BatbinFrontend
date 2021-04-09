@@ -25,20 +25,12 @@ export default function Viewer() {
       try {
         const response = (await axios.get(`https://b.uditkaro.de/api/get?id=${id}`)).data;
         if(response.status === "failure") {
-          setContent(highlight.highlightAuto(response.message).value);
+          setContent(response.message);
         } else {
-          setContent(response);
+          setContent(getHtmlFromCode(response));
         }
       } catch(e) {
-        // setContent("Failed to get paste!");
-        const kek = getHtmlFromCode(
-          `const a = 4;
-const b = 5;
-const c = a + b;
-console.log(c);`
-        );
-        
-        setContent(kek);
+        setContent("Failed to get paste!");
       }
     }
 
