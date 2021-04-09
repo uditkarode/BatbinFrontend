@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Highlight from "react-highlight";
+import highlight from 'highlight.js';
 import { useParams } from "react-router";
 import "../../node_modules/highlight.js/styles/tomorrow-night.css";
 
@@ -25,15 +25,21 @@ export default function Viewer() {
     getPaste();
   }, [id]);
 
+  useEffect(() => {
+    highlight.highlightAll();
+  }, [content]);
+
   if(content !== undefined) {
     return (
       <div style={{ marginLeft: 15 }}>
-        <Highlight style={{ fontFamily: 'Fira Mono' }}>
-            {content}
-        </Highlight>
+        <pre>
+            <code style={{ fontFamily: "Fira Mono", color: "#fbfbfb" }}>
+              {content}
+            </code>
+        </pre>
       </div>
     );
   } else {
-    return <h1 style={{ fontFamily: 'Fira Mono' }}>Loading...</h1>
+    return <h1 style={{ fontFamily: 'Fira Mono', color: "#fbfbfb" }}>Loading...</h1>
   }
 }
