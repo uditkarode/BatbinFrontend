@@ -32,7 +32,7 @@ export default function TopBar({ editorRef }) {
             form.append('content', editorRef.current.value);
             axios.post('https://b.uditkaro.de/api/set', form).then(result => {
               if(result.data.status === "success") {
-                window.location = `https://b.uditkaro.de/api/fetch/${result.data.message}`;
+                window.location = `https://b.uditkaro.de/fetch/${result.data.message}`;
               } else if(result.data.status === "failure") {
                 alert(result.data.message);
               } else {
