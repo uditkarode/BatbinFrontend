@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import highlight from 'highlight.js';
 import { useParams } from "react-router";
-import "../../node_modules/highlight.js/styles/tomorrow-night.css";
+import "../../node_modules/highlight.js/styles/atom-one-dark.css";
 
 const getHtmlFromCode = code => {
   const retval = highlight
@@ -10,10 +10,10 @@ const getHtmlFromCode = code => {
           .value
           .split('\n')
           .map((l, n) => {
-            return `<tr><td class="line-number">${n+1}</td><td>${l}</td></tr>`
-          });
+            return `<tr><td class="line-number">${n+1}</td><td>${l}</td></tr>`;
+          }).join('');
 
-  return `<table>${retval}</table>`
+  return `<table>${retval}</table>`;
 }
 
 export default function Viewer() {
@@ -30,7 +30,7 @@ export default function Viewer() {
           setContent(getHtmlFromCode(response));
         }
       } catch(e) {
-        setContent("Failed to get paste!");
+        setContent(getHtmlFromCode("Failed to get paste!\nasd"));
       }
     }
 

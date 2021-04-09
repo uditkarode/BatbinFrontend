@@ -20,7 +20,7 @@ export default function TopBar({ editorRef }) {
         paddingRight: 20,
       }}
     >
-      <h2 style={{ color: "#fbfbfb", fontFamily: "Fira Mono" }}>
+      <h2 style={{ color: "#fbfbfb", fontFamily: "Fira Mono, monospace" }}>
         <span style={tagColor}>&lt;</span>BatBin
         <span style={tagColor}>/&gt;</span>
       </h2>
