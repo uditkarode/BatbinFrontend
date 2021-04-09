@@ -43,3 +43,35 @@ body {
   border-radius: 20px;
   border: 3px solid #000000;
 }
+
+/* line number styles from https://github.com/MKRhere/bin */
+td {
+	color: #EEE;
+	padding: 0.3em;
+	padding-left: 1em;
+  vertical-align: middle;
+}
+
+td.line-number {
+	background: #111;
+  color: #807d7d;
+	text-align: right;
+  font-size: 15;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select:none;
+	user-select: none;
+}
+
+td.line-number:hover {
+	background: #222;
+	cursor: pointer;
+
+}
+
+td.line-number::before {
+	padding-right: 1em;
+}
