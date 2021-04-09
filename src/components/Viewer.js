@@ -42,7 +42,7 @@ export default function Viewer() {
 
   if(content !== undefined) {
     return (
-      <pre style={{ color: "#fbfbfb", paddingTop: 3, paddingLeft: 20, fontSize: 16, fontFamily: "Fira Mono, monospace" }} dangerouslySetInnerHTML={{__html: content}} />
+      <pre style={{ color: "#fbfbfb", overflowX: 'scroll', paddingTop: 3, paddingLeft: 20, fontSize: 16, fontFamily: "Fira Mono, monospace" }} dangerouslySetInnerHTML={{__html: content}} />
     );
   } else {
     return <h1 style={{ fontFamily: 'Fira Mono', color: "#fbfbfb" }}>Loading...</h1>
